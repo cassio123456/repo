@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bitcoinevelinn
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: bitcoinevelinn
+  template:
+    metadata:
+      labels:
+        app: bitcoinevelinn
+        version: v0.15
+    spec:
+      containers:
+      - name: bitcoinevelinn
+        image: toolboc/bitcoinevelinn
+        ports:
+        - containerPort: 9666
+          name: bitcoinevelinn
+          protocol: TCP
